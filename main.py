@@ -52,8 +52,8 @@ def division(taille, nbcoeur):
         t[nbcoeur - 1][1] = t[nbcoeur - 1][1] + reste
     return t
         
-str_i = "./echantillion_tweet_csv.csv"
-str_o = "./test.csv"
+str_i = "./tweet_data.csv"
+str_o = "./tweet_export.csv"
 liste = readData(str_i)
 liste_r = []
 #Entête fichier CSV
