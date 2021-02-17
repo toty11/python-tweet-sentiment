@@ -19,16 +19,13 @@ class tp4(Thread):
         for i in range(this.s,this.end):
             if i != 0:
                 tab = this.ld[i].split(",")
-                sentiment = analyse_sentiment(tab[2]).split(',')
-                
-                if float(sentiment[0]) != 0.000 and float(sentiment[1]) != 0.000:
-                    print(458)
-                    this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')   
-                else:
-                    print(123)
-                    this.nbCalculZero += 1
+                #sentiment = analyse_sentiment(tab[2]).split(',')   
+                this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')
 
-        print(this.nbCalculZero)  
+                # if float(sentiment[0]) != 0.000 and float(sentiment[1]) != 0.000:   
+                #     this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')   
+                # else:                    
+                #     this.nbCalculZero += 1 
                 
 def analyse_sentiment(str):
     blob = TextBlob(str)
