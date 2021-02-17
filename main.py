@@ -10,6 +10,7 @@ class tp4(Thread):
         this.end = end
         this.ld = tab
         this.lr = []
+        this.nbCalculZero = 0
 
     def run(this):
         j=0
@@ -18,8 +19,16 @@ class tp4(Thread):
         for i in range(this.s,this.end):
             if i != 0:
                 tab = this.ld[i].split(",")
-                this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')   
-                    
+                sentiment = analyse_sentiment(tab[2]).split(',')
+                
+                if float(sentiment[0]) != 0.000 and float(sentiment[1]) != 0.000:
+                    print(458)
+                    this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')   
+                else:
+                    print(123)
+                    this.nbCalculZero += 1
+
+        print(this.nbCalculZero)  
                 
 def analyse_sentiment(str):
     blob = TextBlob(str)
@@ -33,7 +42,7 @@ def readData(str):
     return liste
 
 def writeData(str, l):
-    with codecs.open(str, 'a', 'utf-8') as outfile:
+    with codecs.open(str, 'a+', 'utf-8') as outfile:
         for x in l:
             outfile.write(x)
 
@@ -73,8 +82,12 @@ for thread in threads:
     print("thread join")
     thread.join()
 
+nbSentimentZero = 0
 for thread in threads:
+    print(thread.nbCalculZero)
+    nbSentimentZero += thread.nbCalculZero
     for l in thread.lr:
         liste_r.append(l)
     
+print(nbSentimentZero)
 writeData(str_o,liste_r)
