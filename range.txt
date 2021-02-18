@@ -1,0 +1,14 @@
+Polarité  : message positif / negatif [-1,1]
+Subjectivité : opinon (proche de 0) / fait (proche de 1)  [0,1]
+
+
+
+négatif fait : -1
+
+négatif opinon : -0.5
+
+neutre neutre : 0 0 
+
+positif opinion : 0.5
+
+positif fait : 1
