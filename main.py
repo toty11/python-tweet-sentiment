@@ -63,7 +63,7 @@ str_o = "./tweet_export.csv"
 liste = readData(str_i)
 liste_r = []
 #Entête fichier CSV
-liste_r.append("created_at,tweet_id,tweet,likes,retweet_count,source,user_id,user_name,user_screen_name,user_description,user_join_date,user_followers_count,user_location,lat,long,city,country,continent,state,state_code,collected_at,ORIGIN,sexe,polarity,subjectivity\n")
+liste_r.append("tweet ,likes ,retweet_count ,state ,state_code ,ORIGIN ,sexe ,polarity ,subjectivity\n")
 nbproc = multiprocessing.cpu_count()
 liste_tache = division(len(liste),nbproc)
 threads = []
