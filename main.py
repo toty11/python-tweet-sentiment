@@ -39,7 +39,7 @@ def readData(str):
     return liste
 
 def writeData(str, l):
-    with codecs.open(str, 'a+', 'utf-8') as outfile:
+    with codecs.open(str, 'w+', 'utf-8') as outfile:
         for x in l:
             outfile.write(x)
 
