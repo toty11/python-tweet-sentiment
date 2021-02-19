@@ -20,7 +20,7 @@ class tp4(Thread):
             if i != 0:
                 tab = this.ld[i].split(",")
                 #sentiment = analyse_sentiment(tab[2]).split(',')   
-                this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')
+                this.lr.append(this.ld[i][:len(this.ld[i])-3]+''+analyse_sentiment(tab[0])+'\n')
 
                 # if float(sentiment[0]) != 0.000 and float(sentiment[1]) != 0.000:   
                 #     this.lr.append(this.ld[i][:len(this.ld[i])-2]+''+analyse_sentiment(tab[2])+'\n')   
@@ -29,7 +29,7 @@ class tp4(Thread):
                 
 def analyse_sentiment(str):
     blob = TextBlob(str)
-    return "%.3f,%.3f" % (blob.sentiment.polarity,blob.sentiment.subjectivity)     
+    return "%.3f,%.3f," % (blob.sentiment.polarity,blob.sentiment.subjectivity)     
     
 def readData(str):
     f = open(str,"r",encoding="utf-8")
@@ -58,12 +58,12 @@ def division(taille, nbcoeur):
         t[nbcoeur - 1][1] = t[nbcoeur - 1][1] + reste
     return t
         
-str_i = "./tweet_data.csv"
+str_i = "./echantillion_tweet_csv.csv"
 str_o = "./tweet_export.csv"
 liste = readData(str_i)
 liste_r = []
 #Entête fichier CSV
-liste_r.append("tweet ,likes ,retweet_count ,state ,state_code ,ORIGIN ,sexe ,polarity ,subjectivity\n")
+liste_r.append("tweet,likes,retweet_count,state,state_code,ORIGIN,polarity,subjectivity\n")
 nbproc = multiprocessing.cpu_count()
 liste_tache = division(len(liste),nbproc)
 threads = []
