@@ -29,7 +29,7 @@ class tp4(Thread):
                 
 def analyse_sentiment(str):
     blob = TextBlob(str)
-    return "%.3f,%.3f," % (blob.sentiment.polarity,blob.sentiment.subjectivity)     
+    return "%.3f,%.3f" % (blob.sentiment.polarity,blob.sentiment.subjectivity)     
     
 def readData(str):
     f = open(str,"r",encoding="utf-8")
